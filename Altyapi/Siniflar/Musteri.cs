@@ -3,7 +3,7 @@ using Altyapi.Enumlar;
 
 namespace Altyapi.Siniflar
 {
-    internal class Musteri : IMusteri
+    public class Musteri : IMusteri
     {
         public MusteriTipi MusteriTipi { get; set; }
         public string TcKimlik { get; set; }

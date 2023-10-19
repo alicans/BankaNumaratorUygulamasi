@@ -35,7 +35,7 @@ namespace Altyapi.Siniflar
                 return BireyselSayac;
             }
             else
-                return 0;
+                return 0; //belki başka bir müşteri tipi gelirse diye
 
         }
 

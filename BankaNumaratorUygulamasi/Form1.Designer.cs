@@ -120,6 +120,7 @@
             btnSiraNumarasiAl.TabIndex = 7;
             btnSiraNumarasiAl.Text = "SIRADAKİ";
             btnSiraNumarasiAl.UseVisualStyleBackColor = true;
+            btnSiraNumarasiAl.Click += btnSiraNumarasiAl_Click;
             // 
             // groupBox1
             // 

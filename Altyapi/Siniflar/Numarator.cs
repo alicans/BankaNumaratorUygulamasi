@@ -2,6 +2,7 @@
 using Altyapi.Enumlar;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace Altyapi.Siniflar
 {
     public class Numarator : INumarator
     {
-        public List<IMusteri> BekleyenMusteriler { get; set; }
+        public BindingList<IMusteri> BekleyenMusteriler { get; set; }
         public IMusteri Musteri { get; set; }
 
         public int VipSayac { get; set; } = 400;
@@ -48,6 +49,7 @@ namespace Altyapi.Siniflar
             else //bekleyen müşteri varsa
             {
                 List<IMusteri> vipList = BekleyenMusteriler.Where(mus => mus.MusteriTipi == MusteriTipi.Vip).OrderBy(m => m.Numara).ToList();
+
                 List<IMusteri> vipOlmayanlar = BekleyenMusteriler.Where(mus => mus.MusteriTipi != MusteriTipi.Vip).OrderBy(m => m.Numara).ToList();
 
                 if(vipList.Count > 0) //vip müşteri varsa

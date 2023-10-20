@@ -40,6 +40,7 @@
             groupBox2 = new GroupBox();
             lblIslemdekiMusteri = new Label();
             label5 = new Label();
+            lblIstatistikler = new Label();
             ((System.ComponentModel.ISupportInitialize)gdvBekleyenler).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -149,10 +150,12 @@
             // lblIslemdekiMusteri
             // 
             lblIslemdekiMusteri.BorderStyle = BorderStyle.Fixed3D;
+            lblIslemdekiMusteri.Font = new Font("Ebrima", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblIslemdekiMusteri.Location = new Point(121, 428);
             lblIslemdekiMusteri.Name = "lblIslemdekiMusteri";
             lblIslemdekiMusteri.Size = new Size(627, 41);
             lblIslemdekiMusteri.TabIndex = 10;
+            lblIslemdekiMusteri.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
@@ -163,17 +166,29 @@
             label5.TabIndex = 11;
             label5.Text = "İşlemdeki Müşteri:";
             // 
+            // lblIstatistikler
+            // 
+            lblIstatistikler.BorderStyle = BorderStyle.Fixed3D;
+            lblIstatistikler.Font = new Font("Ebrima", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblIstatistikler.Location = new Point(12, 488);
+            lblIstatistikler.Name = "lblIstatistikler";
+            lblIstatistikler.Size = new Size(736, 41);
+            lblIstatistikler.TabIndex = 12;
+            lblIstatistikler.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(774, 501);
+            ClientSize = new Size(759, 538);
+            Controls.Add(lblIstatistikler);
             Controls.Add(label5);
             Controls.Add(lblIslemdekiMusteri);
             Controls.Add(gdvBekleyenler);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(label1);
+            MaximizeBox = false;
             Name = "Form1";
             Text = "Sıra Numarası";
             ((System.ComponentModel.ISupportInitialize)gdvBekleyenler).EndInit();
@@ -198,5 +213,6 @@
         private GroupBox groupBox2;
         private Label lblIslemdekiMusteri;
         private Label label5;
+        private Label lblIstatistikler;
     }
 }

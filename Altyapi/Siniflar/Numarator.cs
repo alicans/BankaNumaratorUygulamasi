@@ -45,7 +45,8 @@ namespace Altyapi.Siniflar
             StringBuilder sonuc = new StringBuilder();
             
             if (BekleyenMusteriler.Count == 0)
-                sonuc.Append("Bekleyen müşteri yoktur");
+                sonuc.Append("Bekleyen müşteri yoktur.");
+
             else //bekleyen müşteri varsa
             {
                 List<IMusteri> vipList = BekleyenMusteriler.Where(mus => mus.MusteriTipi == MusteriTipi.Vip).OrderBy(m => m.Numara).ToList();
@@ -54,12 +55,12 @@ namespace Altyapi.Siniflar
 
                 if(vipList.Count > 0) //vip müşteri varsa
                 {
-                    sonuc.Append("Müşteri türü: " + vipList[0].MusteriTipi + " Numarası: " + vipList[0].Numara + "\n");
+                    sonuc.Append("Müşteri türü: " + vipList[0].MusteriTipi + " | Numarası: " + vipList[0].Numara + "\n");
                     BekleyenMusteriler.Remove(vipList[0]);
                 }
                 else if(vipOlmayanlar.Count > 0)
                 {
-                    sonuc.Append("Müşteri türü: " + vipOlmayanlar[0].MusteriTipi + " Numarası: " + vipOlmayanlar[0].Numara + "\n");
+                    sonuc.Append("Müşteri türü: " + vipOlmayanlar[0].MusteriTipi + " | Numarası: " + vipOlmayanlar[0].Numara + "\n");
                     BekleyenMusteriler.Remove(vipOlmayanlar[0]);
                 }
             }

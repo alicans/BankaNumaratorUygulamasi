@@ -39,9 +39,21 @@ namespace BankaNumaratorUygulamasi
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
+            if (txtTcNo.Text.Trim() == "")
+            {
+                MessageBox.Show("Tc kimlik No boþ olamaz!!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!long.TryParse(txtTcNo.Text, out long tcNo))
+            {
+                MessageBox.Show("Tc kimlik No sayýsal olmalýdýr!!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Musteri yeniMusteri = new Musteri();
             yeniMusteri.MusteriTipi = (MusteriTipi)Enum.Parse(typeof(MusteriTipi), cmbMusteriTipi.SelectedItem.ToString()!);
-            yeniMusteri.TcKimlik = txtTcNo.Text;
+            yeniMusteri.TcKimlik = txtTcNo.Text.Trim();
 
             yeniMusteri.NumaratoreGit += banka.Numarator.NumaraUret;
             yeniMusteri.Numara += yeniMusteri.NumaraAl();

@@ -68,7 +68,7 @@ namespace Altyapi.Siniflar
                     BekleyenMusteriler.Remove(vipOlmayanlar[0]);
                 }
             }
-            return sonuc.ToString();
+            return sonuc.ToString(); 
         }
     }
 }

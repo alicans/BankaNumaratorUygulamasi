@@ -8,6 +8,7 @@ namespace Altyapi.Siniflar
         public MusteriTipi MusteriTipi { get; set; }
         public string TcKimlik { get; set; }
         public int Numara { get; set; }
+        public bool IslemTamamlandiMi { get; set; }
 
         public event NumaraDelege NumaratoreGit;
 

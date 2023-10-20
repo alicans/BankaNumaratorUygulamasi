@@ -41,6 +41,7 @@
             lblIslemdekiMusteri = new Label();
             label5 = new Label();
             lblIstatistikler = new Label();
+            lblIlslemeAlinanlar = new Label();
             ((System.ComponentModel.ISupportInitialize)gdvBekleyenler).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -172,15 +173,26 @@
             lblIstatistikler.Font = new Font("Ebrima", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblIstatistikler.Location = new Point(12, 488);
             lblIstatistikler.Name = "lblIstatistikler";
-            lblIstatistikler.Size = new Size(736, 41);
+            lblIstatistikler.Size = new Size(351, 99);
             lblIstatistikler.TabIndex = 12;
             lblIstatistikler.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblIlslemeAlinanlar
+            // 
+            lblIlslemeAlinanlar.BorderStyle = BorderStyle.Fixed3D;
+            lblIlslemeAlinanlar.Font = new Font("Ebrima", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblIlslemeAlinanlar.Location = new Point(369, 488);
+            lblIlslemeAlinanlar.Name = "lblIlslemeAlinanlar";
+            lblIlslemeAlinanlar.Size = new Size(379, 99);
+            lblIlslemeAlinanlar.TabIndex = 13;
+            lblIlslemeAlinanlar.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(759, 538);
+            ClientSize = new Size(759, 598);
+            Controls.Add(lblIlslemeAlinanlar);
             Controls.Add(lblIstatistikler);
             Controls.Add(label5);
             Controls.Add(lblIslemdekiMusteri);
@@ -214,5 +226,6 @@
         private Label lblIslemdekiMusteri;
         private Label label5;
         private Label lblIstatistikler;
+        private Label lblIlslemeAlinanlar;
     }
 }

@@ -2,6 +2,7 @@ using Altyapi.Arabirimler;
 using Altyapi.Enumlar;
 using Altyapi.Siniflar;
 using System.ComponentModel;
+using System.Text;
 
 namespace BankaNumaratorUygulamasi
 {
@@ -21,6 +22,7 @@ namespace BankaNumaratorUygulamasi
             banka.Musteriler = new BindingList<IMusteri>();
             banka.Numarator = new Numarator();
             banka.Numarator.BekleyenMusteriler = new BindingList<IMusteri>();
+
 
 
         }
@@ -51,6 +53,12 @@ namespace BankaNumaratorUygulamasi
                 return;
             }
 
+            if (banka.Musteriler.Any(m => m.TcKimlik == tcNo.ToString().Trim()))
+            {
+                MessageBox.Show("Yazdýðýnýz TC Kimlik numarasý kullanýlmýþtýr!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Musteri yeniMusteri = new Musteri();
             yeniMusteri.MusteriTipi = (MusteriTipi)Enum.Parse(typeof(MusteriTipi), cmbMusteriTipi.SelectedItem.ToString()!);
             yeniMusteri.TcKimlik = txtTcNo.Text.Trim();
@@ -63,6 +71,12 @@ namespace BankaNumaratorUygulamasi
 
 
             ListeGuncelle(banka.Numarator.BekleyenMusteriler);
+
+            if (gdvBekleyenler.Columns.Contains("IslemTamamlandiMi"))
+                gdvBekleyenler.Columns.Remove("IslemTamamlandiMi");
+
+            //bütün müþterilerin adetlerini getir
+            lblIstatistikler.Text = ButunMusteriIstatistikleriGetir();
         }
 
         private void ListeGuncelle(BindingList<IMusteri> liste)
@@ -74,7 +88,28 @@ namespace BankaNumaratorUygulamasi
         private void btnSiraNumarasiAl_Click(object sender, EventArgs e)
         {
             lblIslemdekiMusteri.Text = banka.Numarator.SiradakiniGetir();
-            ListeGuncelle(banka.Numarator.BekleyenMusteriler);
+            lblIlslemeAlinanlar.Text = IslemiBitenleriGetir();
+        }
+
+        string ButunMusteriIstatistikleriGetir()
+        {
+            int vipMusteriSayisi = banka.Musteriler.Count(m => m.MusteriTipi == MusteriTipi.Vip);
+            int giseMusteriSayisi = banka.Musteriler.Count(m => m.MusteriTipi == MusteriTipi.Gise);
+            int bireyselSayisi = banka.Musteriler.Count(m => m.MusteriTipi == MusteriTipi.Bireysel);
+
+            return "Bankadaki VIP Müþteri Sayýsý: " + vipMusteriSayisi + "\r\n" +
+                "Giþe Müþteri Sayýsý: " + giseMusteriSayisi + "\r\n" +
+                "Bireysel Müþteri Sayýsý: " + bireyselSayisi;
+        }
+        string IslemiBitenleriGetir()
+        {
+            int vipMusteriSayisi = banka.Musteriler.Count(m => m.MusteriTipi == MusteriTipi.Vip && m.IslemTamamlandiMi);
+            int giseMusteriSayisi = banka.Musteriler.Count(m => m.MusteriTipi == MusteriTipi.Gise && m.IslemTamamlandiMi);
+            int bireyselSayisi = banka.Musteriler.Count(m => m.MusteriTipi == MusteriTipi.Bireysel && m.IslemTamamlandiMi);
+
+            return "Ýþlemi Biten VIP Müþteri Sayýsý: " + vipMusteriSayisi + "\r\n" +
+                "Ýþlemi Biten Giþe Müþteri Sayýsý: " + giseMusteriSayisi + "\r\n" +
+                "Ýþlemi Biten Bireysel Müþteri Sayýsý: " + bireyselSayisi;
         }
     }
 }

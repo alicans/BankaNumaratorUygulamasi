@@ -56,11 +56,15 @@ namespace Altyapi.Siniflar
                 if(vipList.Count > 0) //vip müşteri varsa
                 {
                     sonuc.Append("Müşteri türü: " + vipList[0].MusteriTipi + " | Numarası: " + vipList[0].Numara + "\n");
+
+                    vipList[0].IslemTamamlandiMi = true;
                     BekleyenMusteriler.Remove(vipList[0]);
                 }
                 else if(vipOlmayanlar.Count > 0)
                 {
                     sonuc.Append("Müşteri türü: " + vipOlmayanlar[0].MusteriTipi + " | Numarası: " + vipOlmayanlar[0].Numara + "\n");
+
+                    vipOlmayanlar[0].IslemTamamlandiMi = true;
                     BekleyenMusteriler.Remove(vipOlmayanlar[0]);
                 }
             }

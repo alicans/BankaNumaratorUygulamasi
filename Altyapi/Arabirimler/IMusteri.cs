@@ -7,6 +7,7 @@ namespace Altyapi.Arabirimler
     
     public interface IMusteri
     {
+        public bool IslemTamamlandiMi { get; set; }
         public int NumaraAl();
         public MusteriTipi MusteriTipi { get; set; }
         public string TcKimlik { get; set; }

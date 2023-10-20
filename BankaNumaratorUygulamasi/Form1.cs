@@ -17,13 +17,12 @@ namespace BankaNumaratorUygulamasi
             cmbMusteriTipi.Items.Add("Seçiniz..");
             cmbMusteriTipi.Items.AddRange(Enum.GetNames(typeof(MusteriTipi)));
             cmbMusteriTipi.SelectedIndex = 0;
+            
 
             //bankamýzýn özelliklerini atayalým..
             banka.Musteriler = new BindingList<IMusteri>();
             banka.Numarator = new Numarator();
             banka.Numarator.BekleyenMusteriler = new BindingList<IMusteri>();
-
-
 
         }
 
@@ -72,8 +71,7 @@ namespace BankaNumaratorUygulamasi
 
             ListeGuncelle(banka.Numarator.BekleyenMusteriler);
 
-            if (gdvBekleyenler.Columns.Contains("IslemTamamlandiMi"))
-                gdvBekleyenler.Columns.Remove("IslemTamamlandiMi");
+
 
             //bütün müþterilerin adetlerini getir
             lblIstatistikler.Text = ButunMusteriIstatistikleriGetir();
@@ -81,8 +79,11 @@ namespace BankaNumaratorUygulamasi
 
         private void ListeGuncelle(BindingList<IMusteri> liste)
         {
-            gdvBekleyenler.DataSource = null;
+            gdvBekleyenler.Refresh();
             gdvBekleyenler.DataSource = liste;
+
+            if (gdvBekleyenler.Columns[0].Visible)
+            gdvBekleyenler.Columns[0].Visible = false;
         }
 
         private void btnSiraNumarasiAl_Click(object sender, EventArgs e)
